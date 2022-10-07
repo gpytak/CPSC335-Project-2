@@ -2,31 +2,11 @@
 #include <string>
 using namespace std;
 
-int main()
+string runEncode (string input)
 {
-    // Initialize variables
-    string input, output;
-    int check, repeat = 0, index;
-
-    // User inputs string
-    cout << "Input a string of lowercase letters: ";
-    cin >> input;
-
-    // Check input for uppercase or digit violations
-    while(check < input.size())
-    {
-        if(isupper(input[check]) || isdigit(input[check]))
-        {
-            cout << "Input a string of lowercase letters: ";
-            cin >> input;
-            check = 0;
-        }else{
-            check++;
-        }
-    }
-
-    // Find input for repeated characters
-    for(int i = 0; i < input.size(); i++){
+    string encoded;
+    int repeat = 0, index = 0;
+     for(int i = 0; i < input.size(); i++){
         if(input[i] == input[i+1]){
             index = i;
             while(input[index] == input[i])
@@ -36,13 +16,40 @@ int main()
             }
             i--;
             string num = to_string(repeat);
-            output += num + input[index];
+            encoded += num + input[index];
             repeat = 0;
         }
         else{
-            output += input[i];
+            encoded += input[i];
         }
     }
+    return encoded;
+}
+
+int main()
+{
+    // Initialize variables
+    string input, output;
+    int check = 0;
+
+    // User inputs string
+    cout << "Input a string of lowercase letters: ";
+    getline(cin, input);
+
+    // Check input for uppercase or digit violations
+    while(check < input.size())
+    {
+        if(isupper(input[check]) || isdigit(input[check]))
+        {
+            cout << "Input a string of lowercase letters: ";
+            getline(cin, input);
+            check = 0;
+        }else{
+            check++;
+        }
+    }
+
+    output = runEncode(input);
 
     // Print ouput
     cout << "Output: " << output << endl;
