@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 const int SIZE = 4;
 string arrayOutput[SIZE], test;
 int orderOutput[SIZE], index = 0;
 
-void findWords (string inputArray, string *names)
+void findWords (string inputArray, vector<string> names)
 {
     for(int i = 0; i < inputArray.size(); i++){
         for(int j = 0; j < SIZE; j++){
@@ -32,15 +33,21 @@ void findWords (string inputArray, string *names)
 
 int main()
 {
-    // Initalizing variables
-    //string longArray =  "hemetoaklandrialtofullertonmarcolongchinofresnovallejoclovissimithousand";
-    //string namesArray[SIZE] = {"clovis", "vallejo", "rialto", "marco"};
-    string longArray = "sanoaklandrialtofullertonmarcolongbreacoronamodestoclovissimithousand";
-    string namesArray[SIZE] = {"brea", "modesto", "clovis", "corona"};
-    //string longArray = "marcopolmonafremontrialtofullertonmarcolongfresnochinoclovissimisalinas";
-    //string namesArray[SIZE] = {"fullerton", "chino", "fremont", "fresno"};
-    //string longArray = "torranceoaklandrialtomarcooxnardchinofresnoirvineclovissimiorange";
-    //string namesArray[SIZE] = {"oxnard", "irvine", "orange", "marco"};
+    string longArray, temp;
+    int numWords;
+    vector<string> namesArray;
+
+    cout << "Please enter a string of letters with words scattered in it: ";
+    cin >> longArray;
+    cout << "Please enter the number of words you'd like to look for: ";
+    cin >> numWords;
+    cout << "Please enter a list of words to find. Seperate each word by pressing enter: ";
+    for(int t = 0; t < numWords; t++)
+    {
+        string hold;
+        cin >> hold;
+        namesArray.push_back(hold);
+    }
 
     findWords(longArray, namesArray);
     
