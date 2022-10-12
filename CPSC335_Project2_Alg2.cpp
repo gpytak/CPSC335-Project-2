@@ -3,10 +3,11 @@
 #include <vector>
 using namespace std;
 
+
 string test;
-int index = 0;
 vector<string> arrayOutput;
 vector<int> orderOutput;
+
 
 void findWords (string inputArray, vector<string> names, int words)
 {
@@ -33,30 +34,35 @@ void findWords (string inputArray, vector<string> names, int words)
 
 int main()
 {
-    string longArray, temp, hold;
+
+    string longArray, temp, hold = "";
+
     int numWords = 0;
     vector<string> namesArray;
 
     cout << "Please enter a string of letters with words scattered in it: ";
     getline(cin, longArray);
-    cout << "Please enter a list of words to find, seperated by spaces (Ex: foo foo2): ";
+
+    cout << "Please enter a comma seperated list of words to search for: ";
     getline(cin, temp);
     for(int t = 0; t < temp.size(); t++)
     {
-        if(temp[t] != ' ')
+        if(temp[t] != ',' && temp[t+1] != ' ')
+
         {
             hold += temp[t];
         }
         else
         {
             namesArray.push_back(hold);
-            numWords++;
+
             hold = "";
+            numWords++;
+            t++;
         }
     }
     namesArray.push_back(hold);
     numWords++;
-
 
     findWords(longArray, namesArray, numWords);
     
