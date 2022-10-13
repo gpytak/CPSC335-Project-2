@@ -42,11 +42,12 @@ void mergeSort(vector<int> inputVect, vector<int> inputVect2){
 
 int main()
 { 
-    vector<vector<int>> all_lists = {
-        {2, 5, 9, 21},
-        {-1, 0, 2},
-        {-10, 81, 121},
-        {4, 6, 12, 20, 150}};
+    vector<vector<int>> all_lists;
+    //vector<vector<int>> all_lists = {
+    //    {2, 5, 9, 21},
+    //    {-1, 0, 2},
+    //    {-10, 81, 121},
+    //    {4, 6, 12, 20, 150}};
     // [-10, -1, 0, 2, 2, 4, 5, 6, 9, 12, 20, 21, 81, 121, 150]
     // vector<vector<int>> all_lists = {
     //     {10, 17, 18, 21, 29},
