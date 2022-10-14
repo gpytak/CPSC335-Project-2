@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 vector<int> mergedList;
 
@@ -43,6 +44,7 @@ void mergeSort(vector<int> inputVect, vector<int> inputVect2){
 int main()
 { 
     vector<vector<int>> all_lists;
+    int numRows = 0, temp;
     //vector<vector<int>> all_lists = {
     //    {2, 5, 9, 21},
     //    {-1, 0, 2},
@@ -62,6 +64,27 @@ int main()
     //     {5, 6, 10, 20, 24}};
     // [-4, -2, 0, 2, 4, 5, 6, 6, 7, 10, 10, 12, 14, 15, 20, 24, 25]
 
+    cout<< "Please enter the classes grades in non-decreasing order." << endl
+        << "Seperate each class with enter." << endl
+        << "When finished, please press enter again: ";
+
+    //Doesn't work, keep getting read access violations.
+    //Also doesn't work if I try and read it in like a string and turn that into an int
+    //At this rate, might need to do the merge as we read in the user input
+
+    //while(true)
+    //{
+    //    for(int i = 0; ; i++)
+    //    {
+    //        cin >> temp;
+    //        if(!temp)
+    //            break;
+    //        all_lists[numRows].push_back(temp);
+    //    }
+    //    if(!cin)
+    //        break;
+    //    numRows++;
+    //}
     int rowNum = 0;
     while(rowNum < size(all_lists))
     {
