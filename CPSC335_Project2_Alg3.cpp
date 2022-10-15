@@ -1,5 +1,7 @@
 #include <iostream>
+#include <sstream>
 #include <vector>
+#include <string>
 using namespace std;
 vector<int> mergedList;
 
@@ -47,24 +49,38 @@ int main()
 
     cout << "Please enter the number of classes: ";
     cin >> numClasses;
+    cin.ignore();
     while(numClasses > 0)
     {
         int x = 0, y = 0, z = 0;
         vector<int> hold;
         cout << "\nClass "<< currClass << endl;
-        cout << "Please input the number of grades in this class: ";
-        cin >> y;
-        while(y <= 0)
+        cout << "Input the grades in non-decreasing order, separating each grade with a comma: ";
+        string grades;
+        getline(cin, grades);
+
+        while(z < grades.length())
         {
-            cout << "Error: Please input a positive number for the number of class grades: ";
-            cin >> y;
-        }
-        cout << "Input the grades in non-decreasing order while seperating each grade with the enter key: ";    
-        while(z < y)
-        {
-            cin >> x;
-            hold.push_back(x);
-            z++;
+            stringstream ss;
+            string temp = "";
+            int index, num;
+            if(isdigit(grades[z])){
+                index = z;
+                if(grades[z-1] == '-'){
+                    index = z-1;
+                }
+                while(isdigit(grades[z])){
+                    z++;
+                }
+                for(int i = index; i < z; i++){
+                    temp += grades[i];
+                }
+                ss << temp;
+                ss >> num;
+                hold.push_back(num);
+            }else{
+                z++;
+            }
         }
         all_lists.push_back(hold);
         numClasses--;
